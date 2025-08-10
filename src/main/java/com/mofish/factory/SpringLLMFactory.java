@@ -3,7 +3,7 @@ package com.mofish.factory;
 import com.mofish.factory.service.LLMService;
 import com.mofish.factory.service.impl.OpenAiLLMService;
 import com.mofish.factory.service.impl.QwenLLMService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringLLMFactory {
 
-    @Autowired
+    @Resource
     private OpenAiLLMService openAiLLMService;
 
-    @Autowired
+    @Resource
     private QwenLLMService qwenLLMService;
 
     public enum ModelType {

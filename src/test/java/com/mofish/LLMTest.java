@@ -3,8 +3,8 @@ package com.mofish;
 import com.mofish.factory.SpringLLMFactory;
 import com.mofish.factory.service.impl.OpenAiLLMService;
 import com.mofish.factory.service.impl.QwenLLMService;
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -15,10 +15,10 @@ public class LLMTest {
     // 移除对 LangChain4j 自动配置 Bean 的依赖，使用我们自定义的服务类
 
     // 注入 Spring 管理的服务类，这样可以正确加载配置文件中的参数
-    @Autowired
+    @Resource
     private OpenAiLLMService openAiLLMService;
 
-    @Autowired
+    @Resource
     private QwenLLMService qwenLLMService;
 
     @Test
@@ -34,7 +34,7 @@ public class LLMTest {
     }
 
     // 注入 Spring 管理的工厂，可以正确加载配置文件参数
-    @Autowired
+    @Resource
     private SpringLLMFactory springLLMFactory;
 
     @Test
