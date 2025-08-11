@@ -14,13 +14,6 @@ public class OpenAiLLMService implements LLMService {
             @Value("${openai.api-key}") String apiKey,
             @Value("${openai.base-url}") String baseUrl,
             @Value("${openai.model-name}") String modelName) {
-
-        // 添加调试信息
-        System.out.println("OpenAI Configuration:");
-        System.out.println("API Key: " + (apiKey != null ? apiKey.substring(0, Math.min(10, apiKey.length())) + "..." : "null"));
-        System.out.println("Base URL: " + baseUrl);
-        System.out.println("Model Name: " + modelName);
-
         this.openAiChatModel = OpenAiChatModel
                 .builder()
                 .apiKey(apiKey)
