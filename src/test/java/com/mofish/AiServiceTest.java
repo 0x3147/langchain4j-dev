@@ -21,4 +21,13 @@ public class AiServiceTest {
         String answer = assistant.chat("你好");
         System.out.println(answer);
     }
+
+    @Resource
+    private Assistant assistant;
+
+    @Test
+    public void testAssistant() {
+        String answer = assistant.chat("你好");
+        System.out.println(answer);
+    }
 }
