@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 可以正确注入配置文件中的参数
  */
 @Component
-public class SpringLLMFactory {
+public class LLMFactory {
 
     @Resource
     private OpenAiLLMService openAiLLMService;

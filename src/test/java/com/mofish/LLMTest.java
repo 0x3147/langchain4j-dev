@@ -1,6 +1,6 @@
 package com.mofish;
 
-import com.mofish.factory.SpringLLMFactory;
+import com.mofish.factory.LLMFactory;
 import com.mofish.factory.service.impl.OpenAiLLMService;
 import com.mofish.factory.service.impl.QwenLLMService;
 import jakarta.annotation.Resource;
@@ -35,12 +35,12 @@ public class LLMTest {
 
     // 注入 Spring 管理的工厂，可以正确加载配置文件参数
     @Resource
-    private SpringLLMFactory springLLMFactory;
+    private LLMFactory springLLMFactory;
 
     @Test
     public void testSpringFactory() {
         // 使用 Spring 管理的工厂，可以正确加载 application-local.properties 中的配置
-        String answer = springLLMFactory.createLLMService(SpringLLMFactory.ModelType.OPENAI).chat("你好,你是谁？");
+        String answer = springLLMFactory.createLLMService(LLMFactory.ModelType.OPENAI).chat("你好,你是谁？");
         System.out.println(answer);
     }
 }
