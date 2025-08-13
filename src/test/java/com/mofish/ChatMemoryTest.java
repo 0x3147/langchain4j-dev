@@ -4,7 +4,9 @@ import com.mofish.aiservice.Assistant;
 import dev.langchain4j.community.model.dashscope.QwenChatModel;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.UserMessage;
+import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.response.ChatResponse;
+import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -41,5 +43,31 @@ public class ChatMemoryTest {
         ChatResponse chat2 = qwenChatModel.chat(Arrays.asList(userMessage1, aiMessage1, userMessage2));
         AiMessage aiMessage2 = chat2.aiMessage();
         System.out.println(aiMessage2.text());
+    }
+
+    @Test
+    public void chatMemory3() {
+        MessageWindowChatMemory messageWindowChatMemory = MessageWindowChatMemory.withMaxMessages(10);
+
+        Assistant assistant = AiServices
+                .builder(Assistant.class)
+                .chatModel(qwenChatModel)
+                .chatMemory(messageWindowChatMemory)
+                .build();
+
+        String answer1 = assistant.chat("我是老八");
+        System.out.println(answer1);
+
+        String answer2 = assistant.chat("你知道我是谁吗？");
+        System.out.println(answer2);
+    }
+
+    @Test
+    public void chatMemory4() {
+        String answer1 = assistant.chat("我是老八");
+        System.out.println(answer1);
+
+        String answer2 = assistant.chat("你知道我是谁吗？");
+        System.out.println(answer2);
     }
 }
