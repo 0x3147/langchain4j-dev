@@ -1,6 +1,7 @@
 package com.mofish;
 
 import com.mofish.aiservice.Assistant;
+import com.mofish.chatmemory.SeparateAssistant;
 import dev.langchain4j.community.model.dashscope.QwenChatModel;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.UserMessage;
@@ -23,6 +24,9 @@ public class ChatMemoryTest {
 
     @Resource
     private QwenChatModel qwenChatModel;
+
+    @Resource
+    private SeparateAssistant separateAssistant;
 
     @Test
     public void chatMemory() {
@@ -69,5 +73,17 @@ public class ChatMemoryTest {
 
         String answer2 = assistant.chat("你知道我是谁吗？");
         System.out.println(answer2);
+    }
+
+    @Test
+    public void chatMemory5() {
+        String answer1 = separateAssistant.chat(1, "我是老八");
+        System.out.println(answer1);
+
+        String answer2 = separateAssistant.chat(1, "你知道我是谁吗？");
+        System.out.println(answer2);
+
+        String answer3 = separateAssistant.chat(2, "你知道我是谁吗？");
+        System.out.println(answer3);
     }
 }
