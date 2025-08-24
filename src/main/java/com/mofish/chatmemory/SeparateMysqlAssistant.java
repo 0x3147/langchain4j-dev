@@ -1,6 +1,7 @@
 package com.mofish.chatmemory;
 
 import dev.langchain4j.service.MemoryId;
+import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.spring.AiService;
 
@@ -13,5 +14,6 @@ import static dev.langchain4j.service.spring.AiServiceWiringMode.EXPLICIT;
 )
 public interface SeparateMysqlAssistant {
 
+    @SystemMessage(fromResource = "my_sysMessage.txt")
     String chat(@MemoryId int memoryId, @UserMessage String userMessage);
 }

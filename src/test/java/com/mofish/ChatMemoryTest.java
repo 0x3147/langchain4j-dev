@@ -102,4 +102,10 @@ public class ChatMemoryTest {
         String answer3 = separateMysqlAssistant.chat(2, "你知道我是谁吗？");
         System.out.println(answer3);
     }
+
+    @Test
+    public void testSysMessages() {
+        String answer1 = separateMysqlAssistant.chat(4, "今天是几号？");
+        System.out.println(answer1);
+    }
 }
