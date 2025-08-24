@@ -45,3 +45,4 @@ src/main/resources/application-dev.properties
 *.env
 .env
 .env.local
+db.setting

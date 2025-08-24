@@ -2,6 +2,7 @@ package com.mofish;
 
 import com.mofish.aiservice.Assistant;
 import com.mofish.chatmemory.SeparateAssistant;
+import com.mofish.chatmemory.SeparateMysqlAssistant;
 import dev.langchain4j.community.model.dashscope.QwenChatModel;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.UserMessage;
@@ -27,6 +28,9 @@ public class ChatMemoryTest {
 
     @Resource
     private SeparateAssistant separateAssistant;
+
+    @Resource
+    private SeparateMysqlAssistant separateMysqlAssistant;
 
     @Test
     public void chatMemory() {
@@ -84,6 +88,18 @@ public class ChatMemoryTest {
         System.out.println(answer2);
 
         String answer3 = separateAssistant.chat(2, "你知道我是谁吗？");
+        System.out.println(answer3);
+    }
+
+    @Test
+    public void chatMemory6() {
+        String answer1 = separateMysqlAssistant.chat(1, "我是老八");
+        System.out.println(answer1);
+
+        String answer2 = separateMysqlAssistant.chat(1, "你知道我是谁吗？");
+        System.out.println(answer2);
+
+        String answer3 = separateMysqlAssistant.chat(2, "你知道我是谁吗？");
         System.out.println(answer3);
     }
 }
